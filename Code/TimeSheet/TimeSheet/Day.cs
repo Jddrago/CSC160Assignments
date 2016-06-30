@@ -8,17 +8,24 @@ namespace TimeSheet
 {
     public class Day
     {
-        public enum TimeCodes {REGULAR, SICK, VACATION }
-        public int NumHours { get; set; }
-        private const int MaxHours = 24;
-        private float RegularHours = 0;
-        private float SickHours = 0;
-        private float VacationHours = 0;
+        public enum TimeCodes {REGULAR, SICK, VACATION, LASTTIMEENUM }
+        private float[] _Hours = new float[(int)TimeCodes.LASTTIMEENUM];
+
+        public float[] Hours
+        {
+            get { return _Hours; }
+            set { _Hours = value; }
+        }
+
         private DateTime dateTime;
 
         public Day(DateTime dateTime)
         {
             this.dateTime = dateTime;
+        }
+
+        public Day()
+        {
         }
 
         public float HoursWorked { get; set; }
@@ -28,19 +35,7 @@ namespace TimeSheet
         {
             if (hours > 0)
             {
-                HoursWorked += hours;
-                if (timeType == TimeCodes.REGULAR)
-                {
-                    RegularHours += hours;
-                }
-                else if (timeType == TimeCodes.SICK)
-                {
-                    SickHours += hours;
-                }
-                else if (timeType == TimeCodes.VACATION)
-                {
-                    VacationHours += hours;
-                }
+                _Hours[(int)timeType] += hours;
             }
             else
             {
@@ -57,11 +52,11 @@ namespace TimeSheet
             return false;
         }
 
-        public void Subtract(float hours)
+        public void Subtract(TimeCodes timeType, float hours)
         {
             if (hours < 0)
             {
-                HoursWorked -= hours;
+                _Hours[(int)timeType] -= hours;
             }
             else
             {

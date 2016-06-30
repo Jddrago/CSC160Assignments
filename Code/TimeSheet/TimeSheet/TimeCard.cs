@@ -9,14 +9,21 @@ namespace TimeSheet
     public class TimeCard
     {
         private const int NumDays = 14;
-        public Day[] PayPeriod = new Day[NumDays];
+        private Day[] _PayPeriod = new Day[NumDays];
+
+        public Day[] PayPeriod
+        {
+            get { return _PayPeriod; }
+            set { _PayPeriod = value; }
+        }
+
 
         public bool HasOvertime()
         {
             float TotalHours = 0;
             for (int i = 0; i < NumDays; ++i)
             {
-                TotalHours += PayPeriod[i].HoursWorked; 
+                TotalHours += _PayPeriod[i].Hours[(int)Day.TimeCodes.REGULAR]; 
             }
             if (TotalHours > 40)
             {
