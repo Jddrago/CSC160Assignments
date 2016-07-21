@@ -87,26 +87,42 @@ namespace TicTacToe
             Console.Write("Enter the number: ");
 
             //todo: Prevent returning a location that's already been used
-            int[] temp = {0};
+            int[] temp = {0,0};
             bool validInput = true;
-            while (!validInput)
+            do
             {
                 try
                 {
                     temp = ConvertToArrayLocation(Console.ReadLine());
+                    
                 }
                 catch (FormatException)
                 {
                     validInput = false;
                     Console.WriteLine("Input must be a number between 1 and 9");
                 }
-                if (game.board.board[temp[0], temp[1]] == 'X' || game.board.board[temp[0], temp[1]] == 'O')
+                if (temp[0] < 0 || temp[0] >= 3 || temp[1] < 0 || temp[1] >= 3)
                 {
                     validInput = false;
-                    Console.WriteLine("That space has already been taken. Please try again.");
+                    Console.WriteLine("Input must be a number between 1 and 9");
                 }
-            }
-            
+                else if ((temp[0] >= 0 && temp[0] < 3) && (temp[1] >= 0 && temp[1] < 3))
+                {
+                    if (game.board.board[temp[0], temp[1]] == 'X' || game.board.board[temp[0], temp[1]] == 'O')
+                    {
+                        validInput = false;
+                        Console.WriteLine("That space has already been taken. Please try again.");
+                    }
+                    else
+                    {
+                        validInput = true;
+                    }
+                }
+
+                
+            } while (!validInput);
+
+
             return temp;
         }
 
