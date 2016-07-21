@@ -87,8 +87,27 @@ namespace TicTacToe
             Console.Write("Enter the number: ");
 
             //todo: Prevent returning a location that's already been used
-
-            return ConvertToArrayLocation(Console.ReadLine());
+            int[] temp = {0};
+            bool validInput = true;
+            while (!validInput)
+            {
+                try
+                {
+                    temp = ConvertToArrayLocation(Console.ReadLine());
+                }
+                catch (FormatException)
+                {
+                    validInput = false;
+                    Console.WriteLine("Input must be a number between 1 and 9");
+                }
+                if (game.board.board[temp[0], temp[1]] == 'X' || game.board.board[temp[0], temp[1]] == 'O')
+                {
+                    validInput = false;
+                    Console.WriteLine("That space has already been taken. Please try again.");
+                }
+            }
+            
+            return temp;
         }
 
 
@@ -101,6 +120,7 @@ namespace TicTacToe
         public int[] ConvertToArrayLocation(string boardPosition)
         {
             int position = Int32.Parse(boardPosition);
+
             position--; //reduce position to account for 1-based board map (done for user experience)
             int row = position / 3;
             int column = position % 3;
