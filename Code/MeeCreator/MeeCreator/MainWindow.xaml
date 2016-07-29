@@ -1,0 +1,93 @@
+﻿<Window x:Class="MeeCreator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MeeCreator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="346.007" Width="439.958">
+    <StackPanel x:Name="MainPanel" HorizontalAlignment="Left" Orientation="Horizontal">
+        <StackPanel.Resources>
+            <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+        </StackPanel.Resources>
+        <TabControl TabStripPlacement="Top">
+            <TabItem Name="Face" Header="Face">
+                <StackPanel>
+                    <Label HorizontalAlignment="Center">Width</Label>
+                    <Slider x:Name="FaceWidth" Width="80" Maximum="30" Minimum="10"/>
+                    <Label HorizontalAlignment="Center">Height</Label>
+                    <Slider x:Name="FaceHeight" Width="80" Maximum="30" Minimum="10"/>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Name="Eyes" Header="Eyes">
+                <StackPanel>
+                    <Label HorizontalAlignment="Center">Width</Label>
+                    <Slider x:Name="EyeWidth" Width="80" Maximum="10" Minimum="5"/>
+                    <Label HorizontalAlignment="Center">Height</Label>
+                    <Slider x:Name="EyeHeight" Width="80" Maximum="10" Minimum="5"/>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Name="Mouth" Header="Mouth">
+                <StackPanel>
+                    <Label HorizontalAlignment="Center">Width</Label>
+                    <Slider x:Name="MouthWidth" Width="80" Maximum="80" Minimum="40"/>
+                    <Label HorizontalAlignment="Center">Height</Label>
+                    <Slider x:Name="MouthHeight" Width="80" Maximum="40" Minimum="20"/>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Name="Nose" Header="Nose">
+                <StackPanel>
+                    <Label HorizontalAlignment="Center">Width</Label>
+                    <Slider x:Name="NoseWidth" Width="80" Maximum="20" Minimum="10"/>
+                    <Label HorizontalAlignment="Center">Height</Label>
+                    <Slider x:Name="NoseHeight" Width="80" Maximum="40" Minimum="20"/>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Name="Eyebrows" Header="Eyebrows">
+
+            </TabItem>
+            
+        </TabControl>
+        <Canvas Width="198" Background="#FFD6F5F5">
+            <Ellipse Height= "12" Width="10" Canvas.Left="93" Canvas.Top="97" Fill="#FFE2BA51" RenderTransformOrigin="0.5,0.5">
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="{Binding Value, ElementName=FaceWidth}" ScaleY="{Binding Value, ElementName=FaceHeight}"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+            <Ellipse Height="3" Width="3" Canvas.Top="75" Canvas.Left="81" Fill="MidnightBlue" RenderTransformOrigin="0.5,0.5">
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="{Binding Value, ElementName=EyeWidth}" ScaleY="{Binding Value, ElementName=EyeHeight}"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+            <Ellipse Height="3" Width="3" Canvas.Top="75" Canvas.Left="112" Fill="MidnightBlue" RenderTransformOrigin="0.5,0.5">
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="{Binding Value, ElementName=EyeWidth}" ScaleY="{Binding Value, ElementName=EyeHeight}"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+
+            <Ellipse Height="{Binding Value, ElementName=MouthHeight}" Width="{Binding Value, ElementName=MouthWidth}" Fill= "#FFB00303" Canvas.Left="78" Canvas.Top="118"/>
+            <Rectangle Height="{Binding Value, ElementName=NoseHeight}" Width="{Binding Value, ElementName=NoseWidth}" Fill="#FFCFA536" Canvas.Left="93" Canvas.Top="90" Stroke="Black"/>
+            <Polygon Fill="orange" Points="50 170, 100 160, 150 170, 150 270, 50 270"/>
+        </Canvas>
+
+    </StackPanel>
+</Window>
