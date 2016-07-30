@@ -9,6 +9,7 @@
     <StackPanel x:Name="MainPanel" HorizontalAlignment="Left" Orientation="Horizontal">
         <StackPanel.Resources>
             <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+            <local:InvertValueConverter x:Key="InvertValue"/>
         </StackPanel.Resources>
         <TabControl TabStripPlacement="Top">
             <TabItem Name="Face" Header="Face">
@@ -17,6 +18,11 @@
                     <Slider x:Name="FaceWidth" Width="80" Maximum="30" Minimum="10"/>
                     <Label HorizontalAlignment="Center">Height</Label>
                     <Slider x:Name="FaceHeight" Width="80" Maximum="30" Minimum="10"/>
+
+                    <Label HorizontalAlignment="Center" Content="Vertical adjustment"/>
+                    <Slider x:Name="FaceVertAdj" Width="80" Value="0" Minimum="-20" Maximum="20"/>
+                    <Label HorizontalAlignment="Center" Content="Horizontal adjustment"/>
+                    <Slider x:Name="FaceHorAdj" Width="80" Value="0" Minimum="-20" Maximum="20"/>
                 </StackPanel>
             </TabItem>
 
@@ -26,67 +32,135 @@
                     <Slider x:Name="EyeWidth" Width="80" Maximum="10" Minimum="5"/>
                     <Label HorizontalAlignment="Center">Height</Label>
                     <Slider x:Name="EyeHeight" Width="80" Maximum="10" Minimum="5"/>
+                    <Label HorizontalAlignment="Center" Content="Vertical adjustment"/>
+                    <Slider x:Name="EyeVertAdj" Width="80" Value="0" Minimum="-20" Maximum="20"/>
+                    <Label HorizontalAlignment="Center" Content="Horizontal adjustment"/>
+                    <Slider x:Name="EyeHorAdj" Width="80" Value="0" Minimum="-20" Maximum="20"/>
+                    <ComboBox x:Name="comboBox" Height="20" Width="80" Margin="72,0,71,0" >
+                        <ComboBoxItem x:Name="ComboItemBlue" Content="Blue" Background="Blue" Selected="ComboItemBlue_Selected"/>
+                        <ComboBoxItem x:Name="ComboItemRed" Content="Red" Background="Red" Selected="ComboItemRed_Selected"/>
+                        <ComboBoxItem x:Name="ComboItemPurple" Content="Purple" Background="Purple" Selected="ComboItemPurple_Selected"/>
+                    </ComboBox>
                 </StackPanel>
             </TabItem>
 
             <TabItem Name="Mouth" Header="Mouth">
                 <StackPanel>
                     <Label HorizontalAlignment="Center">Width</Label>
-                    <Slider x:Name="MouthWidth" Width="80" Maximum="80" Minimum="40"/>
+                    <Slider x:Name="MouthWidth" Width="80" Maximum="40" Minimum="10"/>
                     <Label HorizontalAlignment="Center">Height</Label>
-                    <Slider x:Name="MouthHeight" Width="80" Maximum="40" Minimum="20"/>
+                    <Slider x:Name="MouthHeight" Width="80" Maximum="40" Minimum="10"/>
+
+                    <Label HorizontalAlignment="Center" Content="Vertical adjustment"/>
+                    <Slider x:Name="MouthVertAdj" Width="80" Value="0" Minimum="-20" Maximum="20"/>
+                    <Label HorizontalAlignment="Center" Content="Horizontal adjustment"/>
+                    <Slider x:Name="MouthHorAdj" Width="80" Value="0" Minimum="-20" Maximum="20"/>
                 </StackPanel>
             </TabItem>
 
             <TabItem Name="Nose" Header="Nose">
                 <StackPanel>
                     <Label HorizontalAlignment="Center">Width</Label>
-                    <Slider x:Name="NoseWidth" Width="80" Maximum="20" Minimum="10"/>
+                    <Slider x:Name="NoseWidth" Width="80" Maximum="20" Minimum="4"/>
                     <Label HorizontalAlignment="Center">Height</Label>
-                    <Slider x:Name="NoseHeight" Width="80" Maximum="40" Minimum="20"/>
+                    <Slider x:Name="NoseHeight" Width="80" Maximum="40" Minimum="8"/>
+
+                    <Label HorizontalAlignment="Center" Content="Vertical adjustment"/>
+                    <Slider x:Name="NoseVertAdj" Width="80" Value="0" Minimum="-20" Maximum="20"/>
+                    <Label HorizontalAlignment="Center" Content="Horizontal adjustment"/>
+                    <Slider x:Name="NoseHorAdj" Width="80" Value="0" Minimum="-20" Maximum="20"/>
                 </StackPanel>
             </TabItem>
 
             <TabItem Name="Eyebrows" Header="Eyebrows">
+                <StackPanel>
+                    <Label HorizontalAlignment="Center">Width</Label>
+                    <Slider x:Name="EyebrowWidth" Width="80" Maximum="10" Minimum="3"/>
+                    <Label HorizontalAlignment="Center">Height</Label>
+                    <Slider x:Name="EyebrowHeight" Width="80" Maximum="10" Minimum="3"/>
 
+                    <Label HorizontalAlignment="Center" Content="Vertical adjustment"/>
+                    <Slider x:Name="EyeBrowVertAdj" Width="80" Value="0" Minimum="-20" Maximum="20"/>
+                    <Label HorizontalAlignment="Center" Content="Horizontal adjustment"/>
+                    <Slider x:Name="EyeBrowHorAdj" Width="80" Value="0" Minimum="-20" Maximum="20"/>
+                </StackPanel>
             </TabItem>
-            
+
+
         </TabControl>
         <Canvas Width="198" Background="#FFD6F5F5">
+            <Polygon Fill="orange" Points="50 170, 100 160, 150 170, 150 270, 50 270"/>
             <Ellipse Height= "12" Width="10" Canvas.Left="93" Canvas.Top="97" Fill="#FFE2BA51" RenderTransformOrigin="0.5,0.5">
                 <Ellipse.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="{Binding Value, ElementName=FaceWidth}" ScaleY="{Binding Value, ElementName=FaceHeight}"/>
                         <SkewTransform/>
                         <RotateTransform/>
-                        <TranslateTransform/>
+                        <TranslateTransform X="{Binding Value, ElementName=FaceHorAdj}" Y="{Binding Value, ElementName=FaceVertAdj}"/>
                     </TransformGroup>
                 </Ellipse.RenderTransform>
             </Ellipse>
-            <Ellipse Height="3" Width="3" Canvas.Top="75" Canvas.Left="81" Fill="MidnightBlue" RenderTransformOrigin="0.5,0.5">
+            <Ellipse x:Name="RightEye" Height="3" Width="3" Canvas.Top="75" Canvas.Left="81" Fill="Blue" RenderTransformOrigin="0.5,0.5">
                 <Ellipse.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="{Binding Value, ElementName=EyeWidth}" ScaleY="{Binding Value, ElementName=EyeHeight}"/>
                         <SkewTransform/>
                         <RotateTransform/>
-                        <TranslateTransform/>
+                        <TranslateTransform  X="{Binding Value, ElementName=EyeHorAdj}" Y="{Binding Value, ElementName=EyeVertAdj}"/>
                     </TransformGroup>
                 </Ellipse.RenderTransform>
             </Ellipse>
-            <Ellipse Height="3" Width="3" Canvas.Top="75" Canvas.Left="112" Fill="MidnightBlue" RenderTransformOrigin="0.5,0.5">
+            <Ellipse x:Name="LeftEye" Height="3" Width="3" Canvas.Top="75" Canvas.Left="112" Fill="Blue" RenderTransformOrigin="0.5,0.5">
                 <Ellipse.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="{Binding Value, ElementName=EyeWidth}" ScaleY="{Binding Value, ElementName=EyeHeight}"/>
                         <SkewTransform/>
                         <RotateTransform/>
-                        <TranslateTransform/>
+                        <TranslateTransform X="{Binding Value, ElementName=EyeHorAdj, Converter={StaticResource ResourceKey=InvertValue}}" Y="{Binding Value, ElementName=EyeVertAdj}"/>
                     </TransformGroup>
                 </Ellipse.RenderTransform>
             </Ellipse>
 
-            <Ellipse Height="{Binding Value, ElementName=MouthHeight}" Width="{Binding Value, ElementName=MouthWidth}" Fill= "#FFB00303" Canvas.Left="78" Canvas.Top="118"/>
-            <Rectangle Height="{Binding Value, ElementName=NoseHeight}" Width="{Binding Value, ElementName=NoseWidth}" Fill="#FFCFA536" Canvas.Left="93" Canvas.Top="90" Stroke="Black"/>
-            <Polygon Fill="orange" Points="50 170, 100 160, 150 170, 150 270, 50 270"/>
+            <Ellipse Height="2" Width="4" Fill= "#FFB00303" Canvas.Left="94" Canvas.Top="130" RenderTransformOrigin="0.5,0.5">
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="{Binding Value, ElementName=MouthWidth}" ScaleY="{Binding Value, ElementName=MouthHeight}"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="{Binding Value, ElementName=MouthHorAdj}" Y="{Binding Value, ElementName=MouthVertAdj}"/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+            <Rectangle Height="4" Width="2" Fill="#FFCFA536" Canvas.Left="96" Canvas.Top="95" Stroke="Black" StrokeThickness=".1" RenderTransformOrigin="0.5,0.5">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="{Binding Value, ElementName=NoseWidth}" ScaleY="{Binding Value, ElementName=NoseHeight}"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="{Binding Value, ElementName=NoseHorAdj}" Y="{Binding Value, ElementName=NoseVertAdj}"/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle x:Name="RightBrow" Fill="#FF814304" Width="4" Height="2" Canvas.Left="78" Canvas.Top="64" RenderTransformOrigin="0.5,0.5">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="{Binding Value, ElementName=EyebrowWidth}" ScaleY="{Binding Value, ElementName=EyebrowHeight}"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="{Binding Value, ElementName=EyeBrowHorAdj}" Y="{Binding Value, ElementName=EyeBrowVertAdj}"/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle x:Name="LeftBrow" Fill="#FF814304" Width="4" Height="2" Canvas.Left="111" Canvas.Top="64" RenderTransformOrigin="0.5,0.5">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="{Binding Value, ElementName=EyebrowWidth}" ScaleY="{Binding Value, ElementName=EyebrowHeight}"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="{Binding Value, ElementName=EyeBrowHorAdj, Converter={StaticResource ResourceKey=InvertValue}}" Y="{Binding Value, ElementName=EyeBrowVertAdj}"/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
         </Canvas>
 
     </StackPanel>
