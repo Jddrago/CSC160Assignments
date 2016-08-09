@@ -8,7 +8,6 @@
         Title="MainWindow" Height="346.007" Width="439.958">
     <StackPanel x:Name="MainPanel" HorizontalAlignment="Left" Orientation="Horizontal">
         <StackPanel.Resources>
-            <BooleanToVisibilityConverter x:Key="BoolToVis"/>
             <local:InvertValueConverter x:Key="InvertValue"/>
         </StackPanel.Resources>
         <TabControl TabStripPlacement="Top">
