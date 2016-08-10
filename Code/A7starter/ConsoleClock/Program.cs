@@ -28,7 +28,7 @@ namespace ConsoleClock
             ticker.SecondsChanged += new Clock.TimeChangedDelegate(SecondsChangedHandler);
             ticker.MinutesChanged += MinutesChangedHandler;
             ticker.HoursChanged += HoursChangedHandler;
-            ticker.DaysChanged += DaysChangedHandler;
+            //ticker.DaysChanged += DaysChangedHandler;
             ticker.MilliSecondsChanged += MilliSecondsChangedHandler;
             Console.Write("00:00:00:000");
             ticker.Start();
@@ -53,7 +53,7 @@ namespace ConsoleClock
 
         void HoursChangedHandler(int hours)
         {
-            if (hours > 3)
+            if (hours >= 3)
             {
                 hours -= 3;
             }
@@ -69,9 +69,9 @@ namespace ConsoleClock
 
         private void MinutesChangedHandler(int minutes)
         {
-            if (minutes > 3)
+            if (minutes >= 3)
             {
-                minutes -= 3;
+                minutes %= 3;
             }
             if (minutes < 10)
             {
@@ -88,7 +88,7 @@ namespace ConsoleClock
         {
             if (seconds >= 10)
             {
-                seconds -= 10;
+                seconds %= 10;
             }
             if (seconds < 10)
             {
