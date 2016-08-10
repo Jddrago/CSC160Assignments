@@ -104,16 +104,16 @@ namespace ConsoleClock
         {
             if (milliseconds >= 1000)
             {
-                milliseconds -= 1000;
+                milliseconds %= 1000;
             }
             if (milliseconds < 1000)
             {
                 //Console.Write(milliseconds.ToString(), Console.CursorLeft = (milliseconds.ToString().Length - 1) + 9);
-                Console.Write(milliseconds.ToString(), Console.CursorLeft = 9);
+                Console.Write(milliseconds.ToString().PadLeft(3,'0'), Console.CursorLeft = 9);
             }
             else
             {
-                Console.Write(milliseconds.ToString().Remove(0, milliseconds.ToString().Length-3), Console.CursorLeft = 9);
+                Console.Write(milliseconds.ToString(), Console.CursorLeft = 9);
             }
         }
 

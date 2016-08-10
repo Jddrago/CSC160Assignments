@@ -168,13 +168,17 @@ namespace WPFClock
             /*
              * This method is executed by the UI thread, and so can modify the label directly.
              */
+            if(currentTime >= 1000)
+            {
+                currentTime %= 1000;
+            }
             if (currentTime >= 1000)
             {
-                MilliSecondsLabel.Content = currentTime.ToString().Remove(0, currentTime.ToString().Length - 3);
+                MilliSecondsLabel.Content = currentTime.ToString().PadLeft(3, '0');
             }
-            else
+            else if(currentTime < 1000)
             {
-                MilliSecondsLabel.Content = currentTime;
+                MilliSecondsLabel.Content = currentTime.ToString().PadLeft(3,'0');
             }
         }
 

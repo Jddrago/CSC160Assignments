@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFClock"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="620.659">
+        Title="MainWindow" Height="386.013" Width="620.659">
 
-    <Grid>
+    <Grid Background="Black">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -16,16 +16,16 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <CheckBox x:Name="DayBox" Grid.Row="0" Grid.Column="0" Content="Days" HorizontalAlignment="Center" Margin="37,78,44,226" VerticalAlignment="Center" RenderTransformOrigin="-0.169,0.412" Checked="DayBox_Checked" Unchecked="DayBox_Unchecked" IsChecked="True"/>
-        <CheckBox x:Name="HourBox" Grid.Row="0" Grid.Column="1" Content="Hours" HorizontalAlignment="Center" Margin="37,78,37,226" VerticalAlignment="Center" RenderTransformOrigin="-0.169,0.412" Checked="HourBox_Checked" Unchecked="HourBox_Unchecked" Width="49" IsChecked="True"/>
-        <CheckBox x:Name="MinuteBox" Grid.Row="0" Grid.Column="2" Content="Minutes" HorizontalAlignment="Center" Margin="37,78,23,226" VerticalAlignment="Center" RenderTransformOrigin="-0.169,0.412" Width="63" Checked="MinuteBox_Checked" Unchecked="MinuteBox_Unchecked" IsChecked="True"/>
-        <CheckBox x:Name="SecondBox" Grid.Row="0" Grid.Column="3" Content="Seconds" HorizontalAlignment="Center" Margin="37,78,19,226" VerticalAlignment="Center" RenderTransformOrigin="-0.169,0.412" Width="67" Checked="SecondBox_Checked" Unchecked="SecondBox_Unchecked" IsChecked="True"/>
-        <CheckBox x:Name="MilliSecondBox" Grid.Row="0" Grid.Column="4" Content="MilliSeconds" HorizontalAlignment="Center" Margin="10,78,27,226" VerticalAlignment="Center" RenderTransformOrigin="-0.169,0.412" Width="86" Checked="MilliSecondBox_Checked" Unchecked="MilliSecondBox_Unchecked" IsChecked="True"/>
-        <Label x:Name="DaysLabel" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36">00</Label>
-        <Label x:Name="HoursLabel" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36">00</Label>
-        <Label x:Name="MinutesLabel" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36">00</Label>
-        <Label x:Name="SecondsLabel" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36">00</Label>
-        <Label x:Name="MilliSecondsLabel" Grid.Row="0" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36">000</Label>
+        <CheckBox x:Name="DayBox" Grid.Row="0" Grid.Column="0" Content="Days" HorizontalAlignment="Center" Margin="37,78,37,226" VerticalAlignment="Center" RenderTransformOrigin="-0.169,0.412" Checked="DayBox_Checked" Unchecked="DayBox_Unchecked" IsChecked="True" Foreground="Lime" Width="49"/>
+        <CheckBox x:Name="HourBox" Grid.Row="0" Grid.Column="1" Content="Hours" HorizontalAlignment="Center" Margin="37,78,37,226" VerticalAlignment="Center" RenderTransformOrigin="-0.169,0.412" Checked="HourBox_Checked" Unchecked="HourBox_Unchecked" Width="49" IsChecked="True" Foreground="Lime"/>
+        <CheckBox x:Name="MinuteBox" Grid.Row="0" Grid.Column="2" Content="Minutes" HorizontalAlignment="Center" Margin="37,78,23,226" VerticalAlignment="Center" RenderTransformOrigin="-0.169,0.412" Width="63" Checked="MinuteBox_Checked" Unchecked="MinuteBox_Unchecked" IsChecked="True" Foreground="Lime"/>
+        <CheckBox x:Name="SecondBox" Grid.Row="0" Grid.Column="3" Content="Seconds" HorizontalAlignment="Center" Margin="37,78,19,226" VerticalAlignment="Center" RenderTransformOrigin="-0.169,0.412" Width="67" Checked="SecondBox_Checked" Unchecked="SecondBox_Unchecked" IsChecked="True" Foreground="Lime"/>
+        <CheckBox x:Name="MilliSecondBox" Grid.Row="0" Grid.Column="4" Content="MilliSeconds" HorizontalAlignment="Center" Margin="10,78,27,226" VerticalAlignment="Center" RenderTransformOrigin="-0.169,0.412" Width="86" Checked="MilliSecondBox_Checked" Unchecked="MilliSecondBox_Unchecked" IsChecked="True" Foreground="Lime"/>
+        <Label x:Name="DaysLabel" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36" Foreground="Lime">00</Label>
+        <Label x:Name="HoursLabel" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36" Foreground="Lime">00</Label>
+        <Label x:Name="MinutesLabel" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36" Foreground="Lime">00</Label>
+        <Label x:Name="SecondsLabel" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36" Foreground="Lime">00</Label>
+        <Label x:Name="MilliSecondsLabel" Grid.Row="0" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36" Foreground="Lime">000</Label>
 
 
 
