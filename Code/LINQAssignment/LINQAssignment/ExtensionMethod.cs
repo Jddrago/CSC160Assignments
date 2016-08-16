@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LINQAssignment
+{
+    public static class ExtensionMethod
+    {
+        //Q01
+        public static void PrintListOfStudents()
+        {
+            foreach (var student in Program.students)
+            {
+                Console.WriteLine(student.ToString());
+            }
+        }
+    }
+}
