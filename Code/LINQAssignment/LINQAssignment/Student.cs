@@ -12,8 +12,8 @@ namespace LINQAssignment
         public string Last { get; set; }
         public int ID { get; set; }
         public List<int> Scores;
-
-
+        public double averageTestScore;
+        
         public override string ToString()
         {
             return $"First name: {First}, last name: {Last}, ID: {ID}";

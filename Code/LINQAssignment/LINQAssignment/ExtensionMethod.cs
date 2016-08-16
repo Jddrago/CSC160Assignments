@@ -9,9 +9,9 @@ namespace LINQAssignment
     public static class ExtensionMethod
     {
         //Q01
-        public static void PrintListOfStudents()
+        public static void PrintListOfStudents(this List<Student> students)
         {
-            foreach (var student in Program.students)
+            foreach (var student in students)
             {
                 Console.WriteLine(student.ToString());
             }

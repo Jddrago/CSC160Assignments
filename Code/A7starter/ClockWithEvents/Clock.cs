@@ -87,7 +87,6 @@ namespace ClockWithEvents
         {
             if (SecondsChanged != null)
             {
-                //this line is incorrect.  Fix it! :)
                 SecondsChanged.Invoke(milliseconds / MILLISECONDS_IN_SECOND);
             }
         }
@@ -96,7 +95,6 @@ namespace ClockWithEvents
         {
             if (HoursChanged != null)
             {
-                //this line is incorrect.  Fix it! :)
                 HoursChanged.Invoke(milliseconds / MILLISECONDS_IN_HOUR);
             }
         }
@@ -105,7 +103,6 @@ namespace ClockWithEvents
         {
             if (DaysChanged != null)
             {
-                //this line is incorrect.  Fix it! :)
                 DaysChanged.Invoke(milliseconds / MILLISECONDS_IN_DAY);
             }
         }
